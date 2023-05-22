@@ -1,24 +1,5 @@
 #!/bin/bash
 
-# 设置静态IP地址
-cat << EOF > /etc/sysconfig/network-scripts/ifcfg-ens33
-TYPE=Ethernet
-NAME=ens33
-DEVICE=ens33
-BOOTPROTO=none
-ONBOOT=yes
-IPADDR=192.168.252.141 
-NETMASK=255.255.255.0
-GATEWAY=192.168.252.2
-DNS1=223.5.5.5
-DNS2=114.114.114.114
-EOF
-
-# 重启网卡
-nmcli connection reload
-nmcli connection up ens33
-
-sleep 20
 
 # 关闭SELinux
 sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
