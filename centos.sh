@@ -9,17 +9,6 @@ setenforce 0
 systemctl stop firewalld.service
 systemctl disable firewalld.service
 
-sleep 2
-
-# 免密登录
-ssh-keygen -t rsa
-ssh-copy-id root@192.168.252.141
-ssh-copy-id root@192.168.252.142
-ssh-copy-id root@192.168.252.143
-ssh-copy-id root@192.168.252.144
-ssh-copy-id root@192.168.252.145
-ssh-copy-id root@192.168.252.146
-
 sleep 2 
 # 关闭DNS解析
 sed -i 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
